@@ -2,17 +2,16 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
-
-server.listen(port, function() {
-	console.log('Server listening at port %d', port);
-});
-
-console.log('here');
+app.set('port', port);
 // Routing
-app.use(express.static(path.join(__dirname, 'public')));
+app.use( express.static(path.join(__dirname, './public')));
+
+const server = app.listen(app.get('port'), function() {
+	console.log('The server is running on: ' + app.get('port'));
+  });
+var io = require('socket.io')(server);
+
 
 var numUsers = 0;
 

@@ -29,9 +29,9 @@ $(function() {
   function addParticipantsMessage (data) {
     var message = '';
     if (data.numUsers === 1) {
-      message += "there's 1 participant";
+      message += "tu esi vienas";
     } else {
-      message += "there are " + data.numUsers + " participants";
+      message += "yra " + data.numUsers + " veikėjai(-ų)";
     }
     log(message);
   }
@@ -105,7 +105,7 @@ $(function() {
   // Adds the visual chat typing message
   function addChatTyping (data) {
     data.typing = true;
-    data.message = 'is typing';
+    data.message = 'rašo...';
     addChatMessage(data);
   }
 
@@ -249,13 +249,13 @@ $(function() {
 
   // Whenever the server emits 'user joined', log it in the chat body
   socket.on('user joined', function (data) {
-    log(data.username + ' joined');
+    log(data.username + ' prisijungė');
     addParticipantsMessage(data);
   });
 
   // Whenever the server emits 'user left', log it in the chat body
   socket.on('user left', function (data) {
-    log(data.username + ' left');
+    log(data.username + ' išėjo');
     addParticipantsMessage(data);
     removeChatTyping(data);
   });
