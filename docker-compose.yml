@@ -2,7 +2,8 @@ version: '3.3'
 
 services:
   chat-app:
+    image: solo4444/web-chat:latest
     container_name:  "chat-app"
-    build: .
+    #build: .
     ports:
       - "8088:3000"
