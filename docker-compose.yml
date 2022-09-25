@@ -6,4 +6,4 @@ services:
     container_name:  "chat-app"
     #build: .
     ports:
-      - "8088:3000"
+      - "8089:3000"
